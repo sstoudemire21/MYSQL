@@ -2,14 +2,16 @@
 use sakila;
 
 #1a: display first and last name of all actors
-SELECT * FROM actor;
+SELECT first_name, last_name
+FROM actor;
 
 #1b: display first and last name in single column called Actor Name
 SELECT concat(first_name, " ", last_name) AS `Actor Name`
 FROM actor;
 
 #2a: ID, first and last name of actor named "Joe"
-SELECT * FROM actor WHERE first_name = "Joe";
+SELECT actor_id, first_name, last_name
+FROM actor WHERE first_name = "Joe";
 
 #2b: all actors whose last name contains "GEN"
 SELECT * FROM actor WHERE last_name LIKE '%gen%';
@@ -156,7 +158,8 @@ JOIN inventory using (film_ID)
 JOIN rental using (inventory_ID)
 JOIN payment using (rental_ID)
 GROUP BY name
-ORDER BY amount DESC;
+ORDER BY amount DESC
+ limit 5;
 
 ##8a.create a view.
 CREATE VIEW top_five_genres (name, revenue) AS
@@ -167,7 +170,8 @@ JOIN inventory using (film_ID)
 JOIN rental using (inventory_ID)
 JOIN payment using (rental_ID)
 GROUP BY name
-ORDER BY amount DESC;
+ORDER BY amount DESC
+ limit 5;
 
 ##8b. Display the view
 SHOW CREATE VIEW `top_five_genres`;
