@@ -132,7 +132,7 @@ GROUP by title
 ORDER BY rentals DESC;
 
 ##7f. Write a query to display how much business, in dollars, each store brought in.
-SELECT store_ID, COUNT(amount) AS 'Dollar Amount'
+SELECT store_ID, SUM(amount) AS 'Dollar Amount'
 FROM store
 JOIN staff using (store_ID)
 JOIN payment using (staff_ID)
